@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YingaGaming Captcha</title>
+
+    <link rel="icon" type="image/png" href="/captcha/guildicon.png">
+
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+    <script>
+        function verify(verifyCode) {
+
+            let urlParams = new URLSearchParams(window.location.search)
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    window.location.href = 'https://yinga.games'
+                }
+            };
+
+            xhr.open("POST", '/verify', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                code: verifyCode,
+                user: urlParams.get('user')
+            }));
+
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+        body {
+            text-align: center;
+            background-color: #2C2F33;
+            color: #FFFFFF;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Dosis', sans-serif;
+            width: 100vw;
+        }
+
+        #captcha {
+            background-color: #23272A;
+            padding: 3em;
+            display: inline-block;
+            border-radius: 25px;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #logo {
+            width: 10%;
+            border-radius: 50%;
+            margin-top: 2em;
+        }
+
+        @media only screen and (max-width: 768px) {
+            #logo {
+                display: none;
+            }
+
+            #captcha {
+                border-radius: 0px;
+                width: 100vw;
+                position: relative;
+                margin-top: 5em;
+                -ms-transform: none;
+                transform: none;
+                top: auto;
+                left: auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- <img src="/captcha/guildicon.png" alt="Logo" id="logo"> -->
+
+    <div id="captcha" class="center">
+        <h3>L&ouml;se das Captcha um Zugriff auf den Server zu bekommen</h3>
+        <h4>Solve the captcha to get access to the server</h4>
+
+        <div class="h-captcha" data-sitekey="32dc82d5-574b-43d6-b00d-fbff4b802812" data-callback="verify"
+            data-theme="dark">
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

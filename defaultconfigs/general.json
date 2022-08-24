@@ -1,0 +1,12 @@
+{
+    "prefix": ".",
+
+    "activities": [
+        {
+            "name": "%prefix%help",
+            "type": "PLAYING"
+		}
+	],
+	
+	"guild": "554453060425089051"
+}
