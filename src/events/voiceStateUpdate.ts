@@ -19,6 +19,7 @@ import { sendEmbed } from '@util/embeds'
 export default async (client: Client, oldState: VoiceState, newState: VoiceState) => {
 
 	if(!newState.member) return
+	if(newState.member.user.bot) return
 
 	if(oldState.channelId != newState.channelId){
 
