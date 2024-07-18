@@ -4,3 +4,6 @@ ecosystem.config.js
 bot.token
 ignorewatch
 configs
+dist
+.env
+docker-compose.yml
